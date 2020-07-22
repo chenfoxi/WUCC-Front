@@ -126,3 +126,9 @@ local.properties
 .scala_dependencies
 .worksheet
 
+.idea/.gitignore
+.idea/WUCC-Front.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
