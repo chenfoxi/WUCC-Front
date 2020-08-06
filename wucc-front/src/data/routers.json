@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Join Us",
+        "path": "/register",
+        "isNoLogin": true,
+        "isSpecialForEdit": false
+    },
+    {
+        "name": "Login",
+        "path": "/login",
+        "isNoLogin": true,
+        "isSpecialForEdit": false
+    },
+    {
+        "name": "Events",
+        "path": "!#",
+        "isNoLogin": false,
+        "isSpecialForEdit": false
+    },
+    {
+        "name": "Posts",
+        "path": "/listPost",
+        "isNoLogin": false,
+        "isSpecialForEdit": false
+    },
+    {
+        "name": "My Space",
+        "path": "/profile",
+        "isNoLogin": false,
+        "isSpecialForEdit": false
+    },
+    {
+        "name": "Save",
+        "path": "/savePost",
+        "isNoLogin": false,
+        "isSpecialForEdit": true
+    },
+    {
+        "name": "Submit",
+        "path": "/submitPost",
+        "isNoLogin": false,
+        "isSpecialForEdit": true
+    }
+]
