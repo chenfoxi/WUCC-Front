@@ -13,7 +13,7 @@
                 class="fill-height text-center ma-0"
             >
                 <v-col cols="12" class="mt-10">
-                    <v-icon style="font-size: 64px" color="dark">{{ value.icon}}</v-icon>
+                    <v-icon style="font-size: 64px" color="dark">{{ value.icon }}</v-icon>
                 </v-col>
                 <v-col cols="12">
                     <h1 class="mx-0 mb-2 text-uppercase font-weight-black">
@@ -32,7 +32,7 @@
                         color="primary"
                         label
                         small
-                        @click.stop=""
+                        @click="handleClick(value)"
                     >
                         Read More
                     </v-chip>
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+    import router from "../router";
+
     export default {
         name: "InfoCard",
         props: {
@@ -53,6 +55,15 @@
             value: {
                 type: Object,
                 require: true
+            }
+        },
+        methods: {
+            handleClick(item){
+                if (!item.href || item.href === "#!"){
+                    console.log()
+                } else {
+                    router.push(item.href);
+                }
             }
         }
     }

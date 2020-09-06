@@ -2,21 +2,25 @@
     {
         "title": "Our Belief",
         "description": "We love God! We love the Bible! Click here to know more about us!",
-        "icon": "mdi-message-text"
+        "icon": "mdi-message-text",
+        "href": "#!"
     },
     {
         "title": "Event",
         "description": "We have lots of events throughout the year. Pencil them all in!",
-        "icon": "mdi-calendar-check"
+        "icon": "mdi-calendar-check",
+        "href": "/events"
     },
     {
         "title": "Testimony",
         "description": "As a believer in Christ, we each have a touching story to tell.",
-        "icon": "mdi-account-voice"
+        "icon": "mdi-account-voice",
+        "href": "#!"
     },
     {
         "title": "Verse",
         "description": "the Word was God(John 1:1)",
-        "icon": "mdi-book-cross"
+        "icon": "mdi-book-cross",
+        "href": "#!"
     }
 ]

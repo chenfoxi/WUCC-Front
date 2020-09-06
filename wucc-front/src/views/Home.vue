@@ -14,7 +14,7 @@
     export default {
         name: "Home",
         components: {
-            InfoCards: () => import('@/components/InfoCards')
+            InfoCards: () => import('@/components/InfoCards'),
         },
         methods: {
         }

@@ -3,8 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
-import './plugins/base';
 import VueYouTubeEmbed from 'vue-youtube-embed'
+
+import './plugins/base';
+import './vee-validate-rules'
+
 
 Vue.config.productionTip = false;
 

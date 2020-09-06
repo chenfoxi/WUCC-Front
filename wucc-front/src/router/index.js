@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import LoginForm from "../views/LoginForm.vue";
 import RegisterForm from "../views/RegisterForm.vue";
+import EventList from "../views/EventList";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,10 @@ const routes = [
         path: '/register',
         component: RegisterForm
     },
+    {
+        path: '/events',
+        component: EventList
+    }
     // {
     //     path: '/profile',
     //     name: 'profile',
