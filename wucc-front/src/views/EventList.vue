@@ -9,6 +9,7 @@
                                 v-for="(value, i) in eventSet" :key="i"
                                 :size="6"
                                 :value="value"
+                                :eventType="1"
                                 class="mx-auto mt-n3">
                             </EventCard>
                         </v-row>
@@ -19,6 +20,7 @@
                             <EventCard
                                 :size="6"
                                 :value="value"
+                                :eventType="1"
                                 class="mx-auto">
                             </EventCard>
                         </v-row>
@@ -72,7 +74,6 @@
             },
         },
         mounted() {
-            console.log(this.$store.state.event.eventList);
             if (this.$store.state.event.eventList.length === 0) {
                 this.$store.dispatch('event/getOEventList', this.oEventCount)
                     .then(

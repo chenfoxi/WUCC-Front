@@ -53,13 +53,10 @@
                                 <v-list-item
                                     v-for="(item, i) in regularEventItems"
                                     :key="i"
-                                    @click="goEventList(item)"
+                                    @click="goEventDetail(item, 0)"
                                 >
-                                    <v-list-item-icon>
-                                        <v-icon v-text="item.icon"></v-icon>
-                                    </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                                        <v-list-item-title v-text="item.title"></v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -69,13 +66,16 @@
                                 <v-list-item
                                     v-for="(item, i) in casualEventItems"
                                     :key="i"
-                                    @click="goEventList(item)"
+                                    @click="goEventDetail(item, 1)"
                                 >
-                                    <v-list-item-icon>
-                                        <v-icon v-text="item.icon"></v-icon>
-                                    </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                                        <v-list-item-title v-text="item.title"></v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
+                                <v-divider></v-divider>
+                                <v-list-item @click="goEvents">
+                                    <v-list-item-content>
+                                        <v-list-item-title>Show more...</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -88,43 +88,40 @@
                     >
                         Blog
                     </v-btn>
-                    <v-menu left offset-y class="">
+                    <v-menu right offset-y transition="slide-y-transition">
                         <template v-slot:activator="{ on }">
-                            <v-avatar :color="getColor" v-on="on" @click="getEventData" size="36" class="ma-2 hidden-sm-and-down">
-                                <span class="white--text">{{ getAvatarName }}</span>
-                            </v-avatar>
+                            <v-btn fab tile icon @click="getEventData">
+                                <v-avatar :color="getColor" v-on="on"  size="36" class="ma-2 hidden-sm-and-down">
+                                    <span class="white--text">{{ getAvatarName }}</span>
+                                </v-avatar>
+                            </v-btn>
+
                         </template>
                         <v-list dense>
-                            <v-subheader>Regular Events</v-subheader>
-                            <v-list-item-group v-model="regularEventItems" color="primary">
-                                <v-list-item
-                                    v-for="(item, i) in regularEventItems"
-                                    :key="i"
-                                    @click="goEventList(item)"
-                                >
+                            <v-subheader>My Space</v-subheader>
+                            <v-list-item-group color="primary">
+                                <v-list-item>
                                     <v-list-item-icon>
-                                        <v-icon v-text="item.icon"></v-icon>
+                                        <v-icon>mdi-account-circle</v-icon>
                                     </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                                        <v-list-item-title>Profile</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
                             <v-divider></v-divider>
-                            <v-subheader>Casual Events</v-subheader>
-                            <v-list-item-group v-model="casualEventItems" color="primary">
+                            <v-list-item-group color="primary">
                                 <v-list-item
-                                    v-for="(item, i) in casualEventItems"
-                                    :key="i"
-                                    @click="goEventList(item)"
+                                    @click="logOut"
                                 >
                                     <v-list-item-icon>
-                                        <v-icon v-text="item.icon"></v-icon>
+                                        <v-icon>mdi-logout-variant</v-icon>
                                     </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                                        <v-list-item-title>LogOut</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
+
                             </v-list-item-group>
                         </v-list>
                     </v-menu>
@@ -136,8 +133,9 @@
 </template>
 
 <script>
-    import {mapMutations} from 'vuex';
+    import { mapMutations } from 'vuex';
     import router from "../../router";
+    import MetaEventService from '@/service/open/meta.event.service';
 
     export default {
         name: "CoreAppBar",
@@ -186,10 +184,10 @@
             }
         },
         methods: {
-            // logOut() {
-            //     this.$store.dispatch('auth/logout');
-            //     this.$router.push('login');
-            // },
+            logOut() {
+                this.$store.dispatch('auth/logout');
+                this.$router.push('/home');
+            },
 
             ...mapMutations("pathes", ['toggleDrawer']),
 
@@ -204,42 +202,30 @@
             getEventData() {
                 this.regularEventItems = [];
                 this.casualEventItems = [];
-                this.regularEventItems.push({
-                    text: "Bible Study",
-                    icon: "mdi-book-open-blank-variant",
-                    href: "/login"
-                });
-                this.regularEventItems.push({
-                    text: "Dinner Meeting",
-                    icon: "mdi-cake",
-                    href: "!"
-                });
-                this.casualEventItems.push({
-                    text: "Visit Wellington",
-                    icon: "mdi-google-maps",
-                    href: "!"
-                });
-                this.casualEventItems.push({
-                    text: "Visit Wellington",
-                    icon: "mdi-google-maps",
-                    href: "!"
-                });
-                this.casualEventItems.push({
-                    text: "Visit Wellington",
-                    icon: "mdi-google-maps",
-                    href: "!"
-                });
-                // more than 3 casual events show more link
-                this.casualEventItems.push({
-                    text: "Show More",
-                    icon: "",
-                    href: "/events"
-                });
+                MetaEventService.getValidEventList(0).then(
+                    data => {
+                        data.forEach(ele => this.regularEventItems.push(ele));
+                        console.log(data);
+                    }
+                );
+                MetaEventService.getValidEventList(1).then(
+                    data => {
+                        data.forEach(ele => this.casualEventItems.push(ele));
+                        console.log(data);
+                    }
+                )
             },
-            goEventList(item) {
-                router.push(item.href);
+            goEventDetail(item, type) {
+                if (type === 0){
+                    router.push(`/revent/${item.id}`);
+                }
+                if (type === 1){
+                    router.push(`/oevent/${item.id}`);
+                }
+            },
+            goEvents(){
+                router.push("/events");
             }
-
         }
 
     }

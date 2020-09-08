@@ -8,7 +8,6 @@ class MetaEventService {
     getValidEventList(type) {
         return http.get(`${API_URL}listOrderBy/${type}`)
             .then(response => {
-                console.log(response.data);
                 return response.data;
             })
             .catch(error => {
