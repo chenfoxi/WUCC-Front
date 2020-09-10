@@ -28,19 +28,19 @@ const routes = [
     {
         path: '/events',
         component: EventList
+    },
+    {
+        path: '/event/:type/:id',
+        name: 'eventDetails',
+        // lazy-loaded
+        component: () => import('@/views/EventDetailPage.vue')
+    },
+    {
+        path: '/revent/:id',
+        name: 'revent',
+        // lazy-loaded
+        component: () => import('@/views/REventPage.vue')
     }
-    // {
-    //     path: '/profile',
-    //     name: 'profile',
-    //     // lazy-loaded
-    //     component: () => import('./views/Home.vue')
-    // },
-    // {
-    //     path: '/user',
-    //     name: 'user',
-    //     // lazy-loaded
-    //     component: () => import('./views/Home.vue')
-    // }
 ];
 
 

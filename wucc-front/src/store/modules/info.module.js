@@ -2,12 +2,10 @@
 export const info = {
     namespaced: true,
     state: {
-       information: require('@/data/info.json')
+        information: require('@/data/info.json'),
     },
     getters: {},
-    mutations: {
-
-    },
+    mutations: {},
     actions: {}
 
 };

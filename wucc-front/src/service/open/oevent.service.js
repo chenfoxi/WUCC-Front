@@ -1,4 +1,5 @@
 import http from '../../api-config';
+import OEvent from '@/models/oEvent';
 
 const API_URL = '/open/oevent/';
 
@@ -26,7 +27,9 @@ class OEventService {
             `${API_URL}getOEvent/${oId}`,
         ).then(response => {
             console.log(response.data);
-            return response.data;
+            let temp = response.data.data;
+            return new OEvent(temp.id, temp.title, temp.description, temp.content,
+                temp.street, temp.suburb, temp.city, temp.url, temp.startTime, temp.endTime, temp.status);
         }).catch(error => {
             console.log(error);
         });

@@ -220,7 +220,7 @@
                     router.push(`/revent/${item.id}`);
                 }
                 if (type === 1){
-                    router.push(`/oevent/${item.id}`);
+                    router.push(`/event/1/${item.id}`);
                 }
             },
             goEvents(){

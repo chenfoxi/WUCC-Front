@@ -18,6 +18,7 @@
             CoreDrawer: () => import('@/components/core/Drawer'),
             CoreView: () => import('@/components/core/View'),
             CoreFooter: () => import('@/components/core/Footer'),
+
         },
 
         data: () => ({

@@ -73,7 +73,6 @@
                             <v-spacer></v-spacer>
                         </template>
                     </join-card>
-
                 </v-dialog>
 
                 <v-btn
@@ -111,7 +110,7 @@
 
 <script>
     import router from "../router";
-    import convertDateFormat from "../util/date";
+    import { convertDateFormat } from "../util/date";
     import MetaEventService from '@/service/open/meta.event.service';
 
     export default {
@@ -168,7 +167,7 @@
         },
         methods: {
             handleClick(item) {
-                router.push("/oevent/" + item.id);
+                router.push(`/event/${this.eventType}/${item.id}`);
             },
             joinEvent(eventId, eventType, dialog) {
                 let userId = this.$store.state.auth.user.id;
