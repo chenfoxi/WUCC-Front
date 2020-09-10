@@ -27,21 +27,6 @@
         },
         data() {
             return {
-                items: [
-                    {
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-                    },
-                    {
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-                    },
-                    {
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-                    },
-                    {
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-                    },
-                ],
-                drawer: null,
                 event: {},
                 eventType: 0,
                 id: 0
@@ -49,26 +34,31 @@
         },
         methods: {
             ...mapMutations("pathes", ['toggleCommentDrawer']),
+            fetchEventDetailData: function () {
+                this.eventType = Number(this.$route.params.type);
+                this.id = Number(this.$route.params.id);
+                if (this.eventType === 1) {
+                    OEventService.getValidOnceEventDetail(this.id).then(
+                        data => {
+                            this.event = data;
+                        },
+                        error => {
+                            console.log(error)
+                        }
+                    );
+                } else if (this.eventType === "2") {
+                    console.log();
+                }
+            }
         },
         mounted() {
-            console.log(this.$route.params.id);
-            console.log(this.$route.params.type);
-            this.eventType = Number(this.$route.params.type);
-            this.id = Number(this.$route.params.id);
-            if (this.eventType === 1) {
-                OEventService.getValidOnceEventDetail(this.id).then(
-                    data => {
-                        this.event = data;
-                    },
-                    error => {
-                        console.log(error)
-                    }
-                );
-            } else if( this.eventType === "2") {
-                console.log();
-            }
+            this.fetchEventDetailData();
 
-        }
+        },
+        watch: {
+            // call again the method if the route changes
+            '$route': 'fetchEventDetailData'
+        },
     }
 </script>
 

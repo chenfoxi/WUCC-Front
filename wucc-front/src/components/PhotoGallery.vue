@@ -16,7 +16,7 @@
     export default {
         name: "PhotoGallery",
         props: {
-            Id: {
+            id: {
                 type: Number,
                 require: true
             },
@@ -32,7 +32,7 @@
         },
         mounted(){
             let tempArray = [];
-            MetaEventService.getPhotos(this.Id, this.type).then(
+            MetaEventService.getPhotos(this.id, this.type).then(
                 data => {
                     if (data.code === 0) {
                         tempArray = data.data;

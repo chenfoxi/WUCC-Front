@@ -227,7 +227,6 @@
                 router.push("/events");
             }
         }
-
     }
 </script>
 
