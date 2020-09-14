@@ -1,8 +1,6 @@
 <template>
     <v-card width="400" class="pa-2">
         <v-card-title>
-            <!--            <h1 class="display-1-->
-            <!--                    text-uppercase font-weight-bold">Join Us</h1>-->
             <slot name="title"></slot>
         </v-card-title>
         <ValidationObserver ref="obs">
@@ -216,7 +214,6 @@
 
                 this.$refs.obs.validate().then(
                     isValid => {
-
                         if (isValid) {
                             let user = new User(this.username, this.firstname, this.lastname,
                                 this.email, this.gender, this.description, this.password);

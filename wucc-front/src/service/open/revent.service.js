@@ -15,9 +15,9 @@ class REventService {
             }
         ).then(response => {
             console.log(response.data);
-            let generalEvent = response.data.general;
-            let last = response.data.lastFinishedEvent;
-            let next = response.data.incomingEvent;
+            let generalEvent = response.data.data.general;
+            let last = response.data.data.lastFinishedEvent;
+            let next = response.data.data.incomingEvent;
 
             return new REventPage(generalEvent, last, next);
         }).catch(error => {
@@ -49,10 +49,10 @@ class REventService {
         ).then(response => {
             console.log(response.data);
 
-            let temp = response.data.data;
-            return new REvent(temp.id, temp.title, temp.rId, temp.dayOfWeek, temp.start_date, temp.end_date,
+            let temp = response.data;
+            return new REvent(temp.id, temp.title, temp.rid, temp.dayOfWeek, temp.startDate, temp.endDate,
                 temp.description, temp.photoUrl, temp.street, temp.suburb, temp.city,
-                temp.start_time, temp.end_time, temp.status, temp.content);
+                temp.startTime, temp.endTime, temp.status, temp.content);
         }).catch(error => {
             console.log(error);
         });

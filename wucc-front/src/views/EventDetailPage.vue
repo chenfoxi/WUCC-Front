@@ -6,7 +6,6 @@
                     <event-detail-card :event="event" :eventType="eventType" />
                     <photo-gallery class="mt-4" :id="id" :type="eventType" />
                     <comment-drawer />
-
                 </main-part>
             </v-row>
         </v-container>
@@ -16,6 +15,7 @@
 <script>
     import {mapMutations} from "vuex";
     import OEventService from '@/service/open/oevent.service';
+    import REventService from '@/service/open/revent.service';
 
     export default {
         name: "EventDetailPage",
@@ -46,12 +46,16 @@
                             console.log(error)
                         }
                     );
-                } else if (this.eventType === "2") {
-                    console.log();
+                } else if (this.eventType === 0) {
+                    REventService.getValidRegularEventDetail(this.id).then(
+                      data => {
+                          this.event = data;
+                      }
+                    );
                 }
             }
         },
-        mounted() {
+        created() {
             this.fetchEventDetailData();
 
         },

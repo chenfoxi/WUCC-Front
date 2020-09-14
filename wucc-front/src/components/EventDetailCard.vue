@@ -77,6 +77,7 @@
         },
         computed: {
             formatDate() {
+                console.log(this.event);
                 let startTime = convertDateFormat(this.event.start_time);
                 let endTime = convertDateFormat(this.event.end_time);
                 return `${startTime} --- ${endTime}`;
