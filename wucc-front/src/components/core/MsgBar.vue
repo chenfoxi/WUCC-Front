@@ -4,7 +4,7 @@
         top
         :color="getColor"
         elevation="24"
-        v-model="notifyModel"
+        :value="notifyModel"
     >
         {{ msg }}
 

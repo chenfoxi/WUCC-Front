@@ -124,7 +124,7 @@
 
 <script>
     import router from "../router";
-    import { convertDateFormat } from "../util/date";
+    import { convertDateTimeFormat } from "../util/date";
     import MetaEventService from '@/service/open/meta.event.service';
 
     export default {
@@ -164,8 +164,8 @@
         },
         computed: {
             formatDate() {
-                let startTime = convertDateFormat(this.value.start_time);
-                let endTime = convertDateFormat(this.value.end_time);
+                let startTime = convertDateTimeFormat(this.value.start_time);
+                let endTime = convertDateTimeFormat(this.value.end_time);
                 return `${startTime} --- ${endTime}`;
             },
             formatAddress() {

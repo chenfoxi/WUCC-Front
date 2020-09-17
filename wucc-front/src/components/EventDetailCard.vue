@@ -51,7 +51,7 @@
 
 <script>
     import { mapMutations } from "vuex";
-    import { convertDateFormat, beforeDate } from "../util/date";
+    import { convertDateTimeFormat, beforeDate } from "../util/date";
     import MetaEventService from '@/service/open/meta.event.service';
 
     export default {
@@ -78,8 +78,8 @@
         computed: {
             formatDate() {
                 console.log(this.event);
-                let startTime = convertDateFormat(this.event.start_time);
-                let endTime = convertDateFormat(this.event.end_time);
+                let startTime = convertDateTimeFormat(this.event.start_time);
+                let endTime = convertDateTimeFormat(this.event.end_time);
                 return `${startTime} --- ${endTime}`;
             },
             formatAddress() {

@@ -14,7 +14,7 @@
             <v-list-item-group>
                 <v-list-item
                     v-for="(item, i) in value"
-                    :key="item.title"
+                    :key="i + item.title"
                     color="secondary"
                     @click="handleClick(item)"
                 >
@@ -28,6 +28,7 @@
                 </v-list-item>
             </v-list-item-group>
         </v-list>
+        <slot name="pagination"></slot>
     </base-card>
 </template>
 
@@ -48,11 +49,20 @@
             color: {
                 type: String,
                 default: "secondary"
+            },
+            isDetail: {
+                type: Boolean,
+                default: false
             }
         },
         methods: {
             handleClick(item) {
-                router.push("/revent/" + item.id);
+                if (!this.isDetail){
+                    router.push("/revent/" + item.id);
+                } else {
+                    router.push(`/event/0/${item.rid}`);
+                }
+
             }
         }
     }

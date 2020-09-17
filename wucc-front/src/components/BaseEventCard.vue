@@ -38,7 +38,10 @@
                 </v-card-text>
             </div>
             <div v-else>
-                <v-card-title>{{ getTitleWithTime }}</v-card-title>
+                <v-card-title>
+                    <slot name="title"></slot>
+                </v-card-title>
+                <v-card-subtitle class="subtitle-2 font-weight-bold ">{{ formatTitle }}</v-card-subtitle>
                 <v-card-text class="text--primary">
                     <div class="intro-h">
                         <p>{{ value.content }}</p>
@@ -56,6 +59,7 @@
 </template>
 
 <script>
+    import { convertDateFormat, convertWeekdayFormat, convertDateTimeFormat } from '@/util/date.js';
     export default {
         name: "BaseEventCard",
         components: {
@@ -79,8 +83,14 @@
             }
         },
         computed: {
+            formatDate() {
+                let startTime = convertDateTimeFormat(this.value.startTime);
+                let endTime = convertDateTimeFormat(this.value.endTime);
+                return `${startTime} --- ${endTime}`;
+            },
             formatWeekday() {
-                return '';
+                return "Every week: " + convertWeekdayFormat(this.value.dayOfWeek)
+                    + " " + convertDateFormat(this.value.startTime, 'LT');
             },
             formatAddress() {
                 if (this.value.street === null && this.value.suburb === null) {
@@ -93,10 +103,12 @@
                     return `${this.value.street}, ${this.value.suburb}, ${this.value.city}`
                 }
             },
-        },
-        methods: {
-            getTitleWithTime(title, date){
-                return title + date;
+            formatTitle() {
+                if (this.eventType === 1){
+                    return `${this.value.title}`;
+                } else {
+                    return 'Time: ' + convertDateFormat(this.value.startDate);
+                }
             }
         }
     }
