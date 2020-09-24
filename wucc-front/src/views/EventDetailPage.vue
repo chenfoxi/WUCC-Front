@@ -5,7 +5,7 @@
                 <main-part :colSize="12">
                     <event-detail-card :event="event" :eventType="eventType" />
                     <photo-gallery class="mt-4" :id="id" :type="eventType" />
-                    <comment-drawer />
+                    <comment-drawer :uId="getUserId" :articleId="id" :articleType="eventType" />
                 </main-part>
             </v-row>
         </v-container>
@@ -52,6 +52,20 @@
                           this.event = data;
                       }
                     );
+                }
+                this.$store.dispatch('commentModule/getCommentList', {
+                    'post_id': this.id,
+                    'comment_type': this.eventType
+                });
+            }
+        },
+        computed: {
+            getUserId(){
+                let state = this.$store.state.auth.user;
+                if (state === null){
+                    return 0;
+                } else {
+                    return state.id;
                 }
             }
         },

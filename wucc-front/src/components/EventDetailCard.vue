@@ -102,7 +102,6 @@
             console.log(this.event.start_time + " " + this.event.end_time);
             let user = this.$store.state.auth.user;
             if (beforeDate(this.event.start_time)) {
-                console.log("1111");
                 if (user === null) {
                     this.checkJoin = false;
                 } else {
