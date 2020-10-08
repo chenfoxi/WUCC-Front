@@ -40,6 +40,16 @@ const routes = [
         name: 'revent',
         // lazy-loaded
         component: () => import('@/views/REventPage.vue')
+    },
+    {
+        path: '/blog',
+        name: 'blogList',
+        component: () => import('@/views/BlogListPage.vue')
+    },
+    {
+        path: '/newBlog',
+        name: 'newBlog',
+        component: () => import('@/views/EditBlogPage.vue')
     }
 ];
 

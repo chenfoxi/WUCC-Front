@@ -84,13 +84,13 @@
                     <v-btn
                         class="hidden-sm-and-down ma-2"
                         text
-                        to="/about"
+                        to="/blog"
                     >
                         Blog
                     </v-btn>
                     <v-menu right offset-y transition="slide-y-transition">
                         <template v-slot:activator="{ on }">
-                            <v-btn fab tile icon @click="getEventData">
+                            <v-btn fab tile icon>
                                 <v-avatar :color="getColor" v-on="on"  size="36" class="ma-2 hidden-sm-and-down">
                                     <span class="white--text">{{ getAvatarName }}</span>
                                 </v-avatar>
@@ -106,6 +106,16 @@
                                     </v-list-item-icon>
                                     <v-list-item-content>
                                         <v-list-item-title>Profile</v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-list-item-group>
+                            <v-list-item-group color="primary">
+                                <v-list-item @click="newBlog">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-blogger</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-content>
+                                        <v-list-item-title>New Blog</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -126,7 +136,6 @@
                         </v-list>
                     </v-menu>
                 </div>
-
             </v-row>
         </v-container>
     </v-app-bar>
@@ -187,6 +196,9 @@
             logOut() {
                 this.$store.dispatch('auth/logout');
                 this.$router.push('/home');
+            },
+            newBlog() {
+              this.$router.push('/newBlog');
             },
 
             ...mapMutations("pathes", ['toggleDrawer']),

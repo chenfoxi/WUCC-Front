@@ -16,7 +16,7 @@
                     v-for="(item, i) in value"
                     :key="i + item.title"
                     color="secondary"
-                    @click="handleClick(item)"
+                    @click="handleClick(item, itemType)"
                 >
                     <v-list-item-content
                     >
@@ -50,17 +50,22 @@
                 type: String,
                 default: "secondary"
             },
-            isDetail: {
-                type: Boolean,
-                default: false
+            // 0--rEvent 1--rEventDetail 2--blog
+            itemType: {
+                type: Number,
+                default: 0
             }
         },
         methods: {
-            handleClick(item) {
-                if (!this.isDetail){
+            handleClick(item, type) {
+                if (type === 0){
                     router.push("/revent/" + item.id);
-                } else {
+                }
+                if (type === 1){
                     router.push(`/event/0/${item.rid}`);
+                }
+                if (type === 2) {
+                    router.push(`/blog/${item.id}`);
                 }
 
             }

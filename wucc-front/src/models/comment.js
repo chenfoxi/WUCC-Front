@@ -7,7 +7,7 @@ export default class Comment {
         this.content = content;
         this.avatar_url = avatar_url;
         this.first_name = first_name;
-        this.last_name = first_name;
+        this.last_name = last_name;
         this.id = id;
     }
 }

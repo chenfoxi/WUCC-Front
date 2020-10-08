@@ -44,7 +44,7 @@
                 <list-card
                     color="secondary"
                     :title="sidePartTitle"
-                    :isDetail=true
+                    itemType="1"
                     :value="hisREventSet"
                 >
                     <template v-if="length > 5" v-slot:pagination>

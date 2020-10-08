@@ -5,6 +5,7 @@ import { pathes } from './modules/pathes.module';
 import { info } from "./modules/info.module";
 import { event } from "./modules/event.module";
 import { commentModule } from "./modules/comment.module";
+import {blogModule } from "./modules/blog.module";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
       pathes,
       info,
       event,
-      commentModule
+      commentModule,
+      blogModule
   }
 });

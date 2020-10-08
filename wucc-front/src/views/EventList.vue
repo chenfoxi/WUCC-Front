@@ -33,6 +33,7 @@
                         color="secondary"
                         :value="regularEvents"
                         title="Regular Event"
+                        itemType="0"
                     ></list-card>
                 </side-part>
             </v-row>
